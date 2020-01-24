@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webservice01-obj-create
+  labels:
+    name: webby
+spec:
+  containers:
+  -
+    name: webby
+    image: reg.alta3.com/247-lopez-webby
+    ports:
+     -
+       name: web
+       containerPort: 8888
+       protocol: TCP
+

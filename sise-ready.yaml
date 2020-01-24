@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sise-ready
+  labels:
+    name: sise-ready
+spec:
+  containers:
+  - name: sise-ready-web
+    image: mhausenblas/sise-ready:0.5.0
+    ports:
+    - name: web
+      containerPort: 9876
+      protocol: TCP
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 9876
+      periodSeconds: 2
+      failureThreshold: 3
+      successThreshold: 1
